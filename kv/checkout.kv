@@ -1,0 +1,53 @@
+#: import utils kivy.utils
+<CheckoutScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#dff2e5")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        GridLayout:
+            rows:1
+            pos_hint:{"top":1, "Left":1}
+            size_hint: 1,.1
+        GridLayout:
+            rows:1
+            pos_hint:{"top":0.9, "Left":1}
+            size_hint: 1,.2
+            Image:
+                source: "icons/Food.png"
+            Image:
+                source: "icons/logo.png"
+            Image:
+                source: "icons/Food2.png"
+
+        Label:
+            pos_hint:{"top":0.7,"left":1}
+            size_hint: 1,0.1
+            text: "Your Order is:"
+            color: [0, 0, 0, 1]
+            bold: True
+            font_size: 25
+            id: today_menu
+        GridLayout:
+            rows:4
+            pos_hint:{"top":0.6 , "left":1}
+            size_hint: 1,0.4
+            Label:
+                color: 0.0, 0.0, 0.0, 5
+                text: "orderlist"
+                font_size:30
+                id: order
+
+        GridLayout:
+            rows:1
+            pos_hint:{"top":0.2 , "left":1}
+            size_hint: 1,0.2
+            ImageButton:
+                source: "icons/back.png"
+                on_press: root.manager.current = 'sandwiches'
+            ImageButton:
+                source: "icons/order.png"
+                id:send
+                on_press: root.send_order()

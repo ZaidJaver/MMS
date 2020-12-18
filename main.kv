@@ -1,0 +1,22 @@
+#: include kv/sandwiches.kv
+#: include kv/drinks.kv
+#: include kv/loginscreen.kv
+#: include kv/checkout.kv
+GridLayout:
+    cols:1
+    ScreenManager:
+        id:screen_manager
+        LoginScreen:
+            name:"loginscreen"
+            id: login
+        SandwichesScreen:
+            name: "sandwiches"
+            id: sandwiches
+        DrinksScreen:
+            name: "drinks"
+            id: drinks
+        CheckoutScreen:
+            name: "checkout"
+            id: checkout
+
+

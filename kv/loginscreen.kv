@@ -1,0 +1,63 @@
+<LoginScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#dff2e5")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        GridLayout:
+            rows:1
+            pos_hint:{"top":1, "Left":1}
+            size_hint: 1,.1
+        GridLayout:
+            rows:1
+            pos_hint:{"top":0.9, "Left":1}
+            size_hint: 1,.2
+            Image:
+                source: "icons/chef.png"
+            Image:
+                source: "icons/logo.png"
+            Image:
+                source: "icons/student.png"
+        Label:
+            pos_hint:{"top":0.7,"left":1}
+            size_hint: 1,0.1
+            text: "Sign up / Sign in"
+            color: [0, 0, 0, 1]
+            bold: True
+            font_size: 25
+            id: today_menu
+        TextInput:
+            id: login_email
+            hint_text: "email"
+            size_hint: .8,.1
+            pos_hint: {"top":.5,"right": .9}
+        TextInput:
+            id: login_password
+            password: True
+            hint_text: "password"
+            size_hint: .8,.1
+            pos_hint: {"top":.3,"right": .9}
+        Label:
+            id: login_message
+            text: ""
+            color: (1,0,0,1)
+            size_hint: .8,.1
+            pos_hint: {"top":.2,"right": .9}
+        LabelButton:
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex("#dff2e5") if self.state == 'normal' else utils.get_color_from_hex("#3244AA")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "[u]Sign up![/u]"
+            markup: True
+            color: (0,0,0)
+            size_hint: .8,.1
+            pos_hint: {"top":.1,"right": .9}
+            on_release:
+                app.my_firebase.sign_up(login_email.text,login_password.text)
+
+
